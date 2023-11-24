@@ -23,44 +23,58 @@ import zipfile
 
 
 
-pro = ["Lactobacillus", "Bifidobacterium", "Synbiotics", "Prebiotics", "Probiotics", "Postbiotics", 
-    "Parabiotics", "프로바이오틱스", "프리바이오틱스", "신바이오틱스", "포스트바이오틱스", "acidophilus", "casei", 
+pro = ["lactobacillus", "bifidobacterium", "synbiotics", "prebiotics", "probiotics", "postbiotics", 
+    "parabiotics", "프로바이오틱스", "프리바이오틱스", "신바이오틱스", "포스트바이오틱스", "acidophilus", "casei", 
            "gasseri", "delbrueck", "bulgaricus", "helveticus", "fermentum", "paracasei", "바이오","틱스",
            "plantarum", "reuteri", "rhamnosus", "salivarius", "lactis", "faecium", "락토","비피도",
-           "faecalis", "thermophilus", "bifidum", "breve", "longum", "animalis","lactis", "락토바실러스", "비피도박테리움","비피더스", "스트렙토코커스"]
+           "faecalis", "thermophilus", "bifidum", "breve", "longum", "animalis","lactis", 
+       "락토바실러스", "비피도박테리움","비피더스", "스트렙토코커스",
+       'Lactobacillus', 'Bifidobacterium', 'Synbiotics', 'Prebiotics', 'Probiotics', 'Postbiotics', 'Parabiotics',
+       'Acidophilus', 'Casei', 'Gasseri', 'Delbrueck', 'Bulgaricus', 'Helveticus', 'Fermentum', 
+       'Paracasei', 'Plantarum', 'Reuteri', 'Rhamnosus', 'Salivarius', 'Lactis', 'Faecium', 
+    'Faecalis', 'Thermophilus', 'Bifidum', 'Breve', 'Longum', 'Animalis', 'Lactis']
 
 vita = ["비타민 A", "비타민A", "베타카로틴", "비타민 D", "비타민D", "비타민 E", "비타민E", 
     "비타민 K", "비타민K", "비타민 B1", "비타민B1", "비타민 B2", "B2", "나이아신","판토텐산",
     "비타민 B6", "B6", "엽산", "비타민 B12", "B12", "비오틴", "비타민 C", "비타민C","칼슘",
-    "마그네슘", "철","아연","구리","셀레늄", "셀렌","요오드","망간","몰리브덴","칼륨",
-    "크롬","필수지방산","단백질","식이섬유"]
+    "마그네슘", "마그늄", "철","아연","구리","셀레늄", "셀렌","요오드","망간", "망가니즈",
+        "몰리브덴","칼륨","크롬","필수지방산","단백질","식이섬유"]
 
-gosi = ['인삼', '홍삼', '엽록소', '클로렐라','스피루리나','녹차', '알로에전잎', '프로폴리스', 
-        '코엔자임 Q10', '코엔자임', '대두이소플라본', '구아바잎', '바나바잎', '은행잎', '카르두스마리아누스',
-        '밀크씨슬', '달맞이꽃', 'DHA', 'EPA', '감마리놀', '레시틴', '스쿠알렌', '식물스테롤', '알콕시글리세롤',
+vita3 = ["비타민 A", "베타카로틴", "비타민 D", "비타민 E", "비타민 K", "비타민 B1", "비타민 B2",
+         "나이아신","판토텐산", "비타민 B6", "엽산", "비타민 B12", "비오틴", "비타민 C", "칼슘",
+    "마그네슘", "철","아연","구리","셀레늄", "셀렌","요오드","망간", 
+        "몰리브덴","칼륨","크롬","필수지방산","단백질","식이섬유", "셀레늄(또는 셀렌)"]
+
+vita2 = ["A", "B", "B1", "B2", "B12", 'D','E', 'B6', 'C']
+
+gosi = ['인삼', '홍삼', '엽록소', '클로렐라','스피루리나','녹차', '알로에전잎','알로에 전잎', '프로폴리스', 
+        '코엔자임 q10','코엔자임q10','코엔자임 Q10','코엔자임Q10', 'Q10',
+        '코엔자임', '대두이소플라본', '구아바잎','구아바 잎', '바나바잎', '바나바 잎', '은행잎',
+        '은행 잎', '카르두스마리아누스', '밀크씨슬', '달맞이꽃','달맞이 꽃', 'DHA', 'EPA', '감마리놀', '레시틴', 
+        '스쿠알렌', '식물스테롤', '알콕시글리세롤',
         '상어간유', '옥타코사놀', '매실', '공액리놀레산', '가르시니아', '루테인', '헤마토', '쏘팔메토',
-        '포스파티딜', '글루코사민', 'N-아세틸글루코사민', 'N-아세틸', 'NAG', '뮤코다당․단백', '뮤코다당',
-        '알로에겔', '영지버섯', '키토올리고당', '키토산', '키토올리고당', '프락토올리고당', '프로바이오틱스', '홍국',
+        '포스파티딜', '글루코사민', 'N-아세틸글루코사민', 'N-아세틸', 'NAG',
+        'N 아세틸글루코사민', 'N 아세틸', 
+        'n-아세틸글루코사민', 'n아세틸글루코사민','n 아세틸글루코사민', 
+        'n-아세틸','n아세틸','n 아세틸', 'nag', '뮤코다당․단백', '뮤코다당',
+        '알로에겔','알로에 겔', '영지버섯', '키토올리고당', '키토산', '키토올리고당', '프락토올리고당', '프로바이오틱스', '홍국',
         '대두단백', '테아닌', '엠에스엠', 'MSM',  '폴리감마글루', '마늘', '히알루론산', '홍경천', '빌베리', '라피노스',
         '크레아틴', '유단백가수', '상황버섯', '토마토', '곤약감자', '구아검','글루코만난', '곤약', '귀리식이', '난소화성말토덱스트린',
         '난소화성말토', '대두식이', '목이버섯식이', '밀식이', '보리식이', '아카시아검', '아라비아검', '옥수수겨식이',
         '치커리추출물', '이눌린', '치커리', '차전자피', '폴리덱스트로', '호로파종자', '분말한천', '화화나무'] 
 
-vitamin_mineral =["A", "베타카로틴", "D", "E", "K", "B1","B2", "나이아신","판토텐산",
-"B6", "엽산", "B12", "비오틴", "C", "칼슘", "마그네슘", "철","아연","구리", "요오드","망간","몰리브덴","칼륨",
-"크롬","필수지방산","단백질","식이섬유"]
 
-vitamin_mineral2 = ["셀레늄", "셀렌"]
+epa = ["오메가-3", "오메가", "오메가 3", "오메가3"]
 
-bc = ["비타민B", "비타민 B", "B1", "B2", "나이아신", 
-      "판토텐산", "B6", "비오틴", "엽산", "비타민 C", "비타민C", "C"]
 
-page3_item = ["멀티비타민미네랄", "다이어트", "장건강","홍삼","뼈", "관절", "항산화", "혈행", "혈당", "면역",
-              "mind 건강", "Brain 건강", "눈", "간", "배변활동", "이너뷰티", "여성건강", "남성건강"]
+page3_item = ["멀티비타민미네랄", "다이어트", "장건강","뼈", "관절", "항산화", "혈행", "혈당", "면역",
+              "mind 건강", "Brain 건강", "눈", "간", "배변활동", "이너뷰티", "여성건강", "남성건강", "단백질"]
 
 page4_item = ["프로바이오틱스", "비타민미네랄","가르시니아","EPA및DHA","홍삼","밀크씨슬","칼마디","MSM / NAG","비타민C",
-              "비오틴","비타민BC","눈 건강","프로폴리스","차전자피식이섬유","쏘팔메토/옥타코사놀","바나바잎추출","은행잎추출","콜라겐"]
+              "비오틴","비타민BC","눈 건강","프로폴리스","차전자피식이섬유","쏘팔메토/옥타코사놀",
+              "바나바잎추출","은행잎추출","콜라겐", "크레아틴", "포스파티딜세린", "감마리놀렌산"]
 
+kmd = ["칼슘", "마그네슘", "비타민D", "비타민 D"]
 # 파일 받기
 def received_contents(request_url):
     response = requests.get(request_url)
@@ -201,462 +215,533 @@ def load_while(load_ws, min_date, max_date):
         #     break
         
 def page2(df, file_name, load_ws2):
-    page2_tot = [[i,0] for i in range(12)]
-    page2_uni = [[i,0] for i in range(12)]
-    page2_exp = [[i,0] for i in range(12)]
+    page2_tot = [[[i,0] for i in range(13)]for j in range(5)]
+    page2_uni = [[[i,0] for i in range(13)]for j in range(5)]
+    page2_exp = [[[i,0] for i in range(13)]for j in range(5)]
 
     for i in range(0,len(df)):
-        page2_tot[list(df["month"])[i]-1][1]+=1
-
-        temp2 = str(list(df["기능성"])[i])
-        temp3 = str(list(df["제품명"])[i])
-
+        ss = df_until_now.iloc[i]
+        page2_tot[2023 - int(ss["year"])][ss["month"]-1][1] += 1
         try:
-            if( temp2.count("(제20") >=1 ):
-                page2_uni[list(df["month"])[i]-1][1]+=1
-
-                continue
-            if( temp3.count("수출") >=1):
-                page2_exp[list(df["month"])[i]-1][1]+=1
+            if(str(ss["기능성"]).count("(제20") >=1 ):
+                page2_uni[2023 - int(ss["year"])][ss["month"]-1][1] += 1
+            if(str(ss["제품명"]).count("수출") >=1):
+                page2_exp[2023 - int(ss["year"])][ss["month"]-1][1] += 1
         except:
             continue
 
-
-    # 행&열 작업
-    line_B = ["B" for i in range(12)]
-    line_C = ["C" for i in range(12)]
-    line_D = ["D" for i in range(12)]
-    line_E = ["E" for i in range(12)]
     
 
-    for i in range(12):
-        line_B[i] += str(i+5)
-        line_C[i] += str(i+5)
-        line_D[i] += str(i+5)
-        line_E[i] += str(i+5)
+    # 행&열 작업
+    line_B = [["B" for i in range(13)] for j in range(5)]
+    line_C = [["C" for i in range(13)] for j in range(5)]
+    line_D = [["D" for i in range(13)] for j in range(5)]
+    line_E = [["E" for i in range(13)] for j in range(5)]
+    
+    
+    for j in range(5):
+        for i in range(13):
+            line_B[j][i] += str(i+5 +(19*j))
+            line_C[j][i] += str(i+5 +(19*j))
+            line_D[j][i] += str(i+5 +(19*j))
+            line_E[j][i] += str(i+5 +(19*j))
+#     print(page2_tot)
+    for j in range(5):
+        for i in range(13):
+            if(i == 12):
+                sum_values = 0
+                for data in page2_tot[j]:
+                    sum_values += data[1]
+                load_ws2[line_B[j][i]] = sum_values
+                
+                sum_values = 0
+                for data in page2_uni[j]:
+                    sum_values += data[1]
+                load_ws2[line_C[j][i]] = sum_values
+                
+                sum_values = 0
+                for data in page2_exp[j]:
+                    sum_values += data[1]
+                load_ws2[line_E[j][i]] = sum_values
+                
+            else:
+                if(page2_tot[j][i][1] != 0):
+                    load_ws2[line_B[j][i]] = page2_tot[j][i][1]
+                    load_ws2[line_C[j][i]] = page2_uni[j][i][1]
+                    load_ws2[line_D[j][i]] = page2_uni[j][i][1]/page2_tot[j][i][1]*100
+                    load_ws2[line_E[j][i]] = int(page2_exp[j][i][1])
 
-    for i in range(12):
-        if(page2_tot[i][1] != 0):
-            load_ws2[line_B[i]] = page2_tot[i][1]
-            load_ws2[line_C[i]] = page2_uni[i][1]
-            load_ws2[line_D[i]] = page2_uni[i][1]/page2_tot[i][1]*100
-            load_ws2[line_E[i]] = int(page2_exp[i][1])
-
-    temp_li = week_of_month()
-    note = "F"+ str(temp_li[0]+4)
-    load_ws2[note] = "(" + str(temp_li[1]) + "주차)"
-#     load_wb.save("★"+d+"_건강기능식품 품목신고 현황.xlsx")
-
+def is_list_in_set(lst, s):
+    # 리스트의 값들이 모두 집합에 포함되어 있고, 집합의 크기가 리스트의 크기보다 크거나 같으면 True, 그렇지 않으면 False 반환
+    ori_s = len(s)
+    if(ori_s > 0 ):
+        for i in lst:
+            s.discard(i)
+        return [len(s), ori_s]
+    else:
+        return [-1, -1]
 def page3(df, file_name, load_ws3):
-    page3_ori = [[["기초영양소",0], ["다이어트", 0], ["장건강", 0], ["뼈", 0], ["관절", 0], ["항산화", 0], 
+    page3_ori = [[[["기초영양소",0], ["다이어트", 0], ["장건강", 0], ["뼈", 0], ["관절", 0], ["항산화", 0], 
                   ["혈행", 0], ["혈당", 0], ["면역", 0], ["mind 건강", 0], ["Brain 건강", 0], ["눈", 0], ["간", 0],
-                  ["배변활동", 0], ["이너뷰티", 0], ["여성건강", 0], ["남성건강", 0], ["단백질", 0]] for i in range(12)]
-
-    cnt = 0
+                  ["배변활동", 0], ["이너뷰티", 0], ["여성건강", 0], ["남성건강", 0], ["단백질", 0]] for i in range(13)]for j in range(5)]
+        
     for i in range(len(df)):
+        row = df.iloc[i]
+        r_year = int(row['year'])
+        r_month = int(row['month'])
+        r_gi = str(row['기능성'])
+        r_gin = str(row['기능성내용'])                
+        r_ju = str(row['주원료'])
+        my_set = set(r_gi.split(", "))
+
         
         ##### 기초영양소
         flag1 = False
         flag2 = False
         for j in gosi: # 고시형 제외
-            if(str(df.loc[i]["기능성"]).count(j)>=1):
+            if(r_gi.count(j)>=1):
                 flag1 = True
                 break
 
         for j in vita: # 비타민 미네랄 포함
-            if(str(df.loc[i]["기능성"]).count(j)>=1):
+            if(r_gi.count(j)>=1):
                 flag2 = True
                 break
 
-        if( not flag1 and flag2 and str(df.loc[i]["기능성"]).count("제20")==0):
-            page3_ori[df.loc[i]["month"]-1][0][1]+=1
-            page3_ori[df.loc[i]["month"]-1][0].append(i)
-            cnt +=1
+        if( not flag1 and flag2 and r_gi.count("제20")==0):
+#             print("r_gi:", r_gi)
+            page3_ori[2023 - r_year][r_month-1][0][1]+=1
 
 
         ##### 다이어트    
-        if(str(df.loc[i]["기능성내용"]).count("체지방") >= 1):
-            page3_ori[df.loc[i]["month"]-1][1][1]+=1
-            page3_ori[df.loc[i]["month"]-1][1].append(i)
-            cnt +=1
+        if(r_gin.count("체지방") >= 1):
+            page3_ori[2023 - r_year][r_month-1][1][1]+=1
 
         ##### 장건강
-        if(str(df.loc[i]["기능성내용"]).count("장 건강") >= 1 or str(df.loc[i]["기능성내용"]).count("장건강") >= 1):
-            page3_ori[df.loc[i]["month"]-1][2][1]+=1
-            page3_ori[df.loc[i]["month"]-1][2].append(i)
-            cnt +=1     
+        if((r_gin.count("장 건강") >= 1 or r_gin.count("장건강") >= 1) and (str(row["제품명"]).count("혼합") == 0)):
+            if (any(keyword in r_gi for keyword in pro) or
+            r_gi.count("알로에 겔") >= 1):
+                page3_ori[2023 - r_year][r_month-1][2][1]+=1 
 
         ##### 뼈
-        if(str(df.loc[i]["기능성내용"]).count("뼈 건강") >= 1 or str(df.loc[i]["기능성내용"]).count("뼈건강") >= 1 or 
-          str(df.loc[i]["기능성내용"]).count("뼈")>=1):
-            if(str(df.loc[i]["기능성"]).count("칼슘") >= 1 or str(df.loc[i]["기능성"]).count("망간") >= 1 or
-              str(df.loc[i]["기능성"]).count("D") >= 1 or str(df.loc[i]["기능성"]).count("마그네슘")>=1): 
-                page3_ori[df.loc[i]["month"]-1][3][1]+=1
-                page3_ori[df.loc[i]["month"]-1][3].append(i)
-                cnt +=1
+        if(r_gin.count("뼈 건강") >= 1 or r_gin.count("뼈건강") >= 1 or 
+          r_gin.count("뼈")>=1):
+            if(is_list_in_set(['칼슘', '망간', 'D','비타민 D','비타민D', 'K', '비타민K','비타민 K', '마그네슘', '폴리감마글루탐산'],my_set)[0] == 0): 
+                page3_ori[2023 - r_year][r_month-1][3][1]+=1
+                
+        my_set = set(r_gi.split(", "))
 
         ##### 관절
-        if(str(df.loc[i]["기능성내용"]).count("관절") >= 1):
-            page3_ori[df.loc[i]["month"]-1][4][1]+=1
-            page3_ori[df.loc[i]["month"]-1][4].append(i)
-            cnt +=1
+        if(r_gin.count("관절") >= 1):
+            page3_ori[2023 - r_year][r_month-1][4][1]+=1
 
         ##### 항산화
-        if(str(df.loc[i]["기능성내용"]).count("항산화") >= 1 and (str(df.loc[i]["기능성"]).count("코엔자임") >= 1 or 
-           str(df.loc[i]["기능성"]).count("프로폴리스") >= 1)):
-            page3_ori[df.loc[i]["month"]-1][5][1]+=1
-            page3_ori[df.loc[i]["month"]-1][5].append(i)
-            cnt +=1
+        if(r_gin.count("항산화") >= 1 and (r_gi.count("코엔자임") >= 1 or 
+           r_gi.count("프로폴리스") >= 1)):
+            page3_ori[2023 - r_year][r_month-1][5][1]+=1
 
         ##### 혈행
-        if(str(df.loc[i]["기능성내용"]).count("혈행") >= 1 or str(df.loc[i]["기능성"]).count("오메가3") >= 1 or 
-           str(df.loc[i]["기능성"]).count("오메가 3") >= 1):
-            page3_ori[df.loc[i]["month"]-1][6][1]+=1
-            page3_ori[df.loc[i]["month"]-1][6].append(i)
-            cnt +=1
+        if(r_gin.count("혈행") >= 1 and r_gi.count("EPA") >= 1):
+            page3_ori[2023 - r_year][r_month-1][6][1]+=1
 
         ##### 혈당
-        if(str(df.loc[i]["기능성내용"]).count("혈당") >= 1):
-            page3_ori[df.loc[i]["month"]-1][7][1]+=1
-            page3_ori[df.loc[i]["month"]-1][7].append(i)
-            cnt +=1
+        if(r_gin.count("혈당") >= 1):
+            page3_ori[2023 - r_year][r_month-1][7][1]+=1
 
         ##### 면역력
-        if((str(df.loc[i]["기능성내용"]).count("면역력") >= 1 or str(df.loc[i]["기능성내용"]).count("면역기능") >= 1) and 
-          ((str(df.loc[i]["기능성"]).count("아연") == 0 or str(df.loc[i]["기능성"]).count("베타글로칸") == 0 or
-           str(df.loc[i]["기능성"]).count("알로에") == 0) and str(df.loc[i]["기능성"]).count("홍삼") == 0)):
-            page3_ori[df.loc[i]["month"]-1][8][1]+=1
-            page3_ori[df.loc[i]["month"]-1][8].append(i)
-            cnt +=1
+        if((r_gin.count("면역력") >= 1 or r_gin.count("면역기능") >= 1) and 
+          ((r_gi.count("아연") >= 1 or r_gi.count("베타글로칸") >= 1 or
+           r_gi.count("알로에") >= 1) and r_gi.count("홍삼") == 0)):
+            page3_ori[2023 - r_year][r_month-1][8][1]+=1
 
         ##### mind 건강
-        if(str(df.loc[i]["기능성내용"]).count("스트레스") >= 1 or str(df.loc[i]["기능성내용"]).count("수면") >= 1 or 
-          str(df.loc[i]["기능성내용"]).count("긴장") >= 1 or str(df.loc[i]["기능성내용"]).count("피로") >= 1):
-            page3_ori[df.loc[i]["month"]-1][9][1]+=1
-            page3_ori[df.loc[i]["month"]-1][9].append(i)
-            cnt +=1
+        if(r_gin.count("스트레스") >= 1 or r_gin.count("수면") >= 1 or 
+          r_gin.count("긴장") >= 1 or r_gin.count("피로") >= 1):
+            page3_ori[2023 - r_year][r_month-1][9][1]+=1
 
         ##### brain 건강
-        if(str(df.loc[i]["기능성내용"]).count("인지") >= 1 or str(df.loc[i]["기능성내용"]).count("기억") >= 1):
-            page3_ori[df.loc[i]["month"]-1][10][1]+=1
-            page3_ori[df.loc[i]["month"]-1][10].append(i)
-            cnt +=1
+        if(r_gin.count("인지") >= 1 or r_gin.count("기억") >= 1):
+            page3_ori[2023 - r_year][r_month-1][10][1]+=1
 
         ##### 눈 건강
-        if(str(df.loc[i]["기능성내용"]).count("눈") >= 1 and str(df.loc[i]["기능성"]).count("EPA") == 0):
-            page3_ori[df.loc[i]["month"]-1][11][1]+=1
-            page3_ori[df.loc[i]["month"]-1][11].append(i)
-            cnt +=1
+        if(r_gin.count("눈") >= 1 and 
+           (any(keyword in r_gi for keyword in epa) or r_gi.count("마리골드") >= 1 or 
+            r_gi.count("루테인") >= 1)):
+            page3_ori[2023 - r_year][r_month-1][11][1]+=1
 
         ##### 간
-        if(str(df.loc[i]["기능성내용"]).count("간 건강") >= 1 or str(df.loc[i]["기능성내용"]).count("간") >= 1):
-            page3_ori[df.loc[i]["month"]-1][12][1]+=1
-            page3_ori[df.loc[i]["month"]-1][12].append(i)
-            cnt +=1
+        if(r_gin.count("간 건강") >= 1 or r_gin.count("간건강") >= 1):
+            page3_ori[2023 - r_year][r_month-1][12][1]+=1
 
         ##### 배변
-        if(str(df.loc[i]["기능성내용"]).count("배변활동") >= 1 or str(df.loc[i]["기능성내용"]).count("배변") >= 1):
-            page3_ori[df.loc[i]["month"]-1][13][1]+=1
-            page3_ori[df.loc[i]["month"]-1][13].append(i)
-            cnt +=1
+        if(r_gin.count("배변활동") >= 1 or r_gin.count("배변 활동") >= 1):
+            page3_ori[2023 - r_year][r_month-1][13][1]+=1
 
-        if(str(df.loc[i]["기능성내용"]).count("보습") >= 1 or str(df.loc[i]["기능성내용"]).count("자외선") >= 1):
-            page3_ori[df.loc[i]["month"]-1][14][1]+=1
-            page3_ori[df.loc[i]["month"]-1][14].append(i)
-            cnt +=1
+        if(r_gin.count("보습") >= 1 or r_gin.count("자외선") >= 1):
+            page3_ori[2023 - r_year][r_month-1][14][1]+=1
 
-        if(str(df.loc[i]["기능성내용"]).count("여성") >= 1 and str(df.loc[i]["기능성"]).count("홍삼") == 0):
-            page3_ori[df.loc[i]["month"]-1][15][1]+=1
-            page3_ori[df.loc[i]["month"]-1][15].append(i)
-            cnt +=1
+        if(r_gin.count("여성") >= 1 and r_gi.count("홍삼") == 0):
+            page3_ori[2023 - r_year][r_month-1][15][1]+=1
 
-        if(str(df.loc[i]["기능성내용"]).count("남성") >= 1 or str(df.loc[i]["기능성내용"]).count("전립선") >= 1):
-            page3_ori[df.loc[i]["month"]-1][16][1]+=1
-            page3_ori[df.loc[i]["month"]-1][16].append(i)
-            cnt +=1
+        if(r_gin.count("남성") >= 1 or r_gin.count("전립선") >= 1):
+            page3_ori[2023 - r_year][r_month-1][16][1]+=1
             
-        if(str(df.loc[i]["주원료"]).count("단백질") >= 1 ):
-            page3_ori[df.loc[i]["month"]-1][17][1]+=1
-            page3_ori[df.loc[i]["month"]-1][17].append(i)
-            cnt +=1
-
-
-    # 행&열 작업
-    line_G = ["G" for i in range(19)]
-    line_H = ["H" for i in range(19)]
-    line_I = ["I" for i in range(19)]
-    line_J = ["J" for i in range(19)]
-    line_K = ["K" for i in range(19)]
-    line_L = ["L" for i in range(19)]
-    line_M = ["M" for i in range(19)]
-    line_N = ["N" for i in range(19)]
-    line_O = ["O" for i in range(19)]
-    line_P = ["P" for i in range(19)]
-    line_Q = ["Q" for i in range(19)]
-    line_R = ["R" for i in range(19)]
-
-
-
-    for i in range(19):
-        line_G[i] += str(i+3)
-        line_H[i] += str(i+3)
-        line_I[i] += str(i+3)
-        line_J[i] += str(i+3)
-        line_K[i] += str(i+3)
-        line_L[i] += str(i+3)
-        line_M[i] += str(i+3)
-        line_N[i] += str(i+3)
-        line_O[i] += str(i+3)
-        line_P[i] += str(i+3)
-        line_Q[i] += str(i+3)
-        line_R[i] += str(i+3)
-
-
-    temp_li = week_of_month()
-    month2 = int(temp_li[0])
+        if(r_gi.count("단백질") >= 1):
+            page3_ori[2023 - r_year][r_month-1][17][1]+=1
     
-    for i in range(month2):
-        for j in range(18):
-            if(i==0):
-                load_ws3[line_G[j]] = page3_ori[i][j][1]
-                continue
-            if(i==1):
-                load_ws3[line_H[j]] = page3_ori[i][j][1]
-                continue
-            if(i==2):
-                load_ws3[line_I[j]] = page3_ori[i][j][1]
-                continue
-            if(i==3):
-                load_ws3[line_J[j]] = page3_ori[i][j][1]
-                continue
-            if(i==4):
-                load_ws3[line_K[j]] = page3_ori[i][j][1]
-                continue
-            if(i==5):
-                load_ws3[line_L[j]] = page3_ori[i][j][1]
-                continue
-            if(i==6):
-                load_ws3[line_M[j]] = page3_ori[i][j][1]
-                continue
-            if(i==7):
-                load_ws3[line_N[j]] = page3_ori[i][j][1]
-                continue
-            if(i==8):
-                load_ws3[line_O[j]] = page3_ori[i][j][1]
-                continue
-            if(i==9):
-                load_ws3[line_P[j]] = page3_ori[i][j][1]
-                continue
-            if(i==10):
-                load_ws3[line_Q[j]] = page3_ori[i][j][1]
-                continue
-            if(i==11):
-                load_ws3[line_R[j]] = page3_ori[i][j][1]
-                continue
+    # 행&열 작업
+    line_G = [["G" for i in range(20)] for j in range(5)]
+    line_H = [["H" for i in range(20)] for j in range(5)]
+    line_I = [["I" for i in range(20)] for j in range(5)]
+    line_J = [["J" for i in range(20)] for j in range(5)]
+    line_K = [["K" for i in range(20)] for j in range(5)]
+    line_L = [["L" for i in range(20)] for j in range(5)]
+    line_M = [["M" for i in range(20)] for j in range(5)]
+    line_N = [["N" for i in range(20)] for j in range(5)]
+    line_O = [["O" for i in range(20)] for j in range(5)]
+    line_P = [["P" for i in range(20)] for j in range(5)]
+    line_Q = [["Q" for i in range(20)] for j in range(5)]
+    line_R = [["R" for i in range(20)] for j in range(5)]
+    line_S = [["S" for i in range(20)] for j in range(5)]
+
+    for j in range(5):
+        for i in range(20):
+            line_G[j][i] += str(i+4 + (25*j))
+            line_H[j][i] += str(i+4 + (25*j))
+            line_I[j][i] += str(i+4 + (25*j))
+            line_J[j][i] += str(i+4 + (25*j))
+            line_K[j][i] += str(i+4 + (25*j))
+            line_L[j][i] += str(i+4 + (25*j))
+            line_M[j][i] += str(i+4 + (25*j))
+            line_N[j][i] += str(i+4 + (25*j))
+            line_O[j][i] += str(i+4 + (25*j))
+            line_P[j][i] += str(i+4 + (25*j))
+            line_Q[j][i] += str(i+4 + (25*j))
+            line_R[j][i] += str(i+4 + (25*j))
+            line_S[j][i] += str(i+4 + (25*j))
+
+    for k in range(5):
+        for i in range(13):
+            for j in range(19):
+                if(j == 18):
+                    j+=1
+                    count = 0
+                    # 행부터 채우기
+                    for data in page3_ori[k]:
+                        count += 1
+                        sum_values = 0
+                        for sublist in data: 
+                            sum_values += int(sublist[1])
+                        if(count == 1):
+                            load_ws3[line_G[k][j]] = sum_values
+                        elif(count == 2):
+                            load_ws3[line_H[k][j]] = sum_values
+                        elif(count == 3):
+                            load_ws3[line_I[k][j]] = sum_values
+                        elif(count == 4):
+                            load_ws3[line_J[k][j]] = sum_values
+                        elif(count == 5):
+                            load_ws3[line_K[k][j]] = sum_values
+                        elif(count == 6):
+                            load_ws3[line_L[k][j]] = sum_values
+                        elif(count == 7):
+                            load_ws3[line_M[k][j]] = sum_values
+                        elif(count == 8):
+                            load_ws3[line_N[k][j]] = sum_values
+                        elif(count == 9):
+                            load_ws3[line_O[k][j]] = sum_values
+                        elif(count == 10):
+                            load_ws3[line_P[k][j]] = sum_values
+                        elif(count == 11):
+                            load_ws3[line_Q[k][j]] = sum_values
+                        elif(count == 12):
+                            load_ws3[line_R[k][j]] = sum_values
+                else:
+                    if(i==0):
+                        load_ws3[line_G[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==1):
+                        load_ws3[line_H[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==2):
+                        load_ws3[line_I[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==3):
+                        load_ws3[line_J[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==4):
+                        load_ws3[line_K[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==5):
+                        load_ws3[line_L[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==6):
+                        load_ws3[line_M[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==7):
+                        load_ws3[line_N[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==8):
+                        load_ws3[line_O[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==9):
+                        load_ws3[line_P[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==10):
+                        load_ws3[line_Q[k][j]] = page3_ori[k][i][j][1]
+                        continue
+                    elif(i==11):
+                        load_ws3[line_R[k][j]] = page3_ori[k][i][j][1]
+                        continue
+            
+        for o in range(18):
+            count_t = 0
+            for p in range(12):
+                count_t += page3_ori[k][p][o][1]
+            load_ws3[line_S[k][o]] = count_t
 
     return page3_ori
 
-def page4(df, file_name, load_ws4):
-    page4_ori = [[["프로바이오틱스",0], ["비타민미네랄", 0], ["가르시니아", 0], ["EPA및DHA", 0], 
-              ["홍삼", 0], ["밀크씨슬", 0], ["칼마디", 0], ["MSM / NAG", 0], ["비타민C", 0], 
-              ["비오틴", 0], ["비타민BC", 0], ["눈 건강", 0], ["프로폴리스", 0], 
-              ["차전자피식이섬유", 0], ["쏘팔메토/옥타코사놀", 0], ["바나바잎추출", 0], 
-              ["은행잎추출", 0], ["콜라겐", 0], ["유산균혼합분말", 0]] for i in range(12)]
 
+
+
+def page4(df, file_name, load_ws4): 
+    page4_ori = [[[["프로바이오틱스",0], ["비타민미네랄", 0], ["가르시니아", 0], ["EPA및DHA", 0], 
+              ["홍삼", 0], ["밀크씨슬", 0], ["칼마디", 0], ["MSM / NAG", 0], ["비타민C", 0], 
+              ["비오틴", 0], ["L-테아닌", 0], ["눈 건강", 0], ["프로폴리스", 0], 
+              ["차전자피식이섬유", 0], ["쏘팔메토/옥타코사놀", 0], ["바나바잎추출", 0], 
+              ["은행잎추출", 0], ["콜라겐", 0], ["크레아틴", 0], ["포스파티딜세린", 0], 
+                  ["감마리놀렌산", 0]] for i in range(13)]for j in range(5)]
+
+   
     for i in range(len(df)):
-        
-        ##### 프로바이오틱스
-        if((str(df.loc[i]["기능성"]).count("프로바이오틱스") >= 1) and 
+        row = df.iloc[i]
+        r_year = int(row['year'])
+        r_month = int(row['month'])
+        r_gi = str(row['기능성'])
+        r_gin = str(row['기능성내용'])
+        r_ju = str(row['주원료'])
+        my_set_gi = set(r_gi.split(", "))
+        my_set_ju = set(r_ju.split(", "))
+
+        ##### 프로바이오틱스        
+        if((r_gi.count("프로바이오틱스") >= 1) and 
            (str(df.loc[i]["제품명"]).count("혼합") == 0 ) and 
            (str(df.loc[i]["제품명"]).count("분말") == 0)):
-            page4_ori[df.loc[i]["month"]-1][0][1]+=1
-            page4_ori[df.loc[i]["month"]-1][0].append(i)
+            page4_ori[2023 - r_year][r_month-1][0][1]+=1
             
          #### 비타민 미네랄 항목
         flag1 = False
-        flag2 = False
         for j in gosi:
-            if(str(df.loc[i]["주원료"]).count(j)>=1):
+            if(r_ju.count(j)>=1):
                 flag1 = True
                 break
 
         for j in vita:
-            if(str(df.loc[i]["주원료"]).count(j)>=1):
-                flag2 = True
-                break
-                
-        cnt = 0
-        if( not flag1 and flag2 and str(df.loc[i]["기능성"]).count("제20")==0):
-            page4_ori[df.loc[i]["month"]-1][1][1]+=1
-            page4_ori[df.loc[i]["month"]-1][1].append(i)
-            cnt +=1
+            if(r_ju.count(j)>=1):
+                if( flag1 == False and r_gi.count("제20")==0):
+                    page4_ori[2023 - r_year][r_month-1][1][1]+=1
+            break
         
         
         ##### 가르시니아
-        if(str(df.loc[i]["주원료"]).count("가르시니아") >= 1 ):
-            page4_ori[df.loc[i]["month"]-1][2][1]+=1
-            page4_ori[df.loc[i]["month"]-1][2].append(i)
+        if(r_ju.count("가르시니아") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][2][1]+=1
 
         ##### EPA & DHA
-        if(str(df.loc[i]["주원료"]).count("EPA") >= 1 or str(df.loc[i]["주원료"]).count("DHA") >= 1 or 
-           str(df.loc[i]["주원료"]).count("오메가3") >= 1 or str(df.loc[i]["주원료"]).count("오메가 3") >= 1 or
-          str(df.loc[i]["주원료"]).count("리놀렌산") >= 1 or str(df.loc[i]["주원료"]).count("IPA") >= 1 ): ##
-            page4_ori[df.loc[i]["month"]-1][3][1]+=1
-            page4_ori[df.loc[i]["month"]-1][3].append(i)
+        if(r_gi.count("EPA") >= 1): 
+            page4_ori[2023 - r_year][r_month-1][3][1]+=1
 
         ##### 홍삼
-        if(str(df.loc[i]["주원료"]).count("홍삼") >= 1 ):
-            page4_ori[df.loc[i]["month"]-1][4][1]+=1
-            page4_ori[df.loc[i]["month"]-1][4].append(i)        
+        if(r_ju.count("홍삼") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][4][1]+=1
 
         ##### 밀크씨슬
-        if(str(df.loc[i]["주원료"]).count("밀크씨슬") >= 1 ):
-            page4_ori[df.loc[i]["month"]-1][5][1]+=1
-            page4_ori[df.loc[i]["month"]-1][5].append(i)
+        if(r_ju.count("밀크씨슬") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][5][1]+=1
 
-        ##### 칼슘
-        if(str(df.loc[i]["주원료"]).count("칼슘") >= 1 or str(df.loc[i]["주원료"]).count("마그네슘") >= 1 or
-          str(df.loc[i]["주원료"]).count("비타민D") >= 1 or str(df.loc[i]["주원료"]).count("비타민 D") >= 1): ##
-            page4_ori[df.loc[i]["month"]-1][6][1]+=1
-            page4_ori[df.loc[i]["month"]-1][6].append(i)
-
+        ##### 칼마디
+        if(r_ju.count("캄슘") >= 1 or r_ju.count("마그네슘") >= 1 or r_ju.count("비타민 D") >= 1 or r_ju.count("비타민D") >= 1):
+            page4_ori[2023 - r_year][r_month-1][6][1]+=1
+        
         ##### n-아세틸
-        if(str(df.loc[i]["주원료"]).count("엠에스엠") >= 1 or str(df.loc[i]["주원료"]).count("N-아세틸") >= 1 or
-          str(df.loc[i]["주원료"]).count("MSM") >= 1 or str(df.loc[i]["주원료"]).count("NAG") >= 1 or
-          str(df.loc[i]["주원료"]).count("N - 아세틸") >= 1): ##
-            page4_ori[df.loc[i]["month"]-1][7][1]+=1
-            page4_ori[df.loc[i]["month"]-1][7].append(i)
-
+        if(r_ju.count("엠에스엠") >= 1 or r_ju.count("N-아세틸") >= 1 or
+          r_ju.count("MSM") >= 1 or r_ju.count("NAG") >= 1 or
+          r_ju.count("N - 아세틸") >= 1): ##
+            page4_ori[2023 - r_year][r_month-1][7][1]+=1
+        my_set = set(r_gi.split(", "))
+        
         ##### 비타민 C
-        if(str(df.loc[i]["주원료"]).count("비타민C") >= 1 or str(df.loc[i]["주원료"]).count("비타민 C") >= 1): ##
-            page4_ori[df.loc[i]["month"]-1][8][1]+=1
-            page4_ori[df.loc[i]["month"]-1][8].append(i)
-
+        if(is_list_in_set(["비타민C", "비타민 C", "C"],my_set_gi)[0] == 0): 
+            page4_ori[2023 - r_year][r_month-1][8][1]+=1
+        
         ##### 비오틴
-        if(str(df.loc[i]["주원료"]).count("비오틴") >= 1 or (str(df.loc[i]["주원료"]).count("비오틴") >= 1 and 
-                                                       str(df.loc[i]["주원료"]).count("판토텐산") >= 1)):
-            page4_ori[df.loc[i]["month"]-1][9][1]+=1
-            page4_ori[df.loc[i]["month"]-1][9].append(i)
+        if(r_ju.count("비오틴") >= 1 or r_ju.count("판토텐산") >= 1):
+            page4_ori[2023 - r_year][r_month-1][9][1]+=1
 
 
-        #### 비타민 BC
-        cnt_bc = 0
-        for j in bc:
-            if(str(df.loc[i]["주원료"]).count(j) >= 1):
-                cnt_bc+=1
-        if(cnt_bc >=2):
-            page4_ori[df.loc[i]["month"]-1][10][1]+=1
-            page4_ori[df.loc[i]["month"]-1][10].append(i)
+        #### L-테아닌
+        if(r_gi.count("테아닌") >= 1):
+            page4_ori[2023 - r_year][r_month-1][10][1]+=1
 
         ##### 눈 건강
-        if(str(df.loc[i]["주원료"]).count("마리골드") >= 1 or str(df.loc[i]["주원료"]).count("지아잔틴") >= 1): ##
-            page4_ori[df.loc[i]["month"]-1][11][1]+=1
-            page4_ori[df.loc[i]["month"]-1][11].append(i)
+        if(r_ju.count("마리골드") >= 1 or r_ju.count("지아잔틴") >= 1): ##
+            page4_ori[2023 - r_year][r_month-1][11][1]+=1
 
         ##### 프로폴리스
-        if(str(df.loc[i]["주원료"]).count("프로폴리스") >= 1 ):
-            page4_ori[df.loc[i]["month"]-1][12][1]+=1
-            page4_ori[df.loc[i]["month"]-1][12].append(i)
+        if(r_ju.count("프로폴리스") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][12][1]+=1
 
         ##### 차전자피
-        if(str(df.loc[i]["주원료"]).count("차전자피") >= 1 ):
-            page4_ori[df.loc[i]["month"]-1][13][1]+=1
-            page4_ori[df.loc[i]["month"]-1][13].append(i)
+        if(r_ju.count("차전자피") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][13][1]+=1
 
         ##### 쏘팔메토
-        if(str(df.loc[i]["주원료"]).count("쏘팔메토") >= 1 or str(df.loc[i]["주원료"]).count("옥타코사놀") >= 1): ##
-            page4_ori[df.loc[i]["month"]-1][14][1]+=1
-            page4_ori[df.loc[i]["month"]-1][14].append(i)
+        if(r_ju.count("쏘팔메토") >= 1 or r_ju.count("옥타코사놀") >= 1): ##
+            page4_ori[2023 - r_year][r_month-1][14][1]+=1
 
         ##### 바나나
-        if(str(df.loc[i]["주원료"]).count("바나바") >= 1 ):
-            page4_ori[df.loc[i]["month"]-1][15][1]+=1
-            page4_ori[df.loc[i]["month"]-1][15].append(i)
+        if(r_ju.count("바나바") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][15][1]+=1
 
         ##### 은행잎
-        if(str(df.loc[i]["주원료"]).count("은행잎") >= 1 ):
-            page4_ori[df.loc[i]["month"]-1][16][1]+=1
-            page4_ori[df.loc[i]["month"]-1][16].append(i)
+        if(r_ju.count("은행잎") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][16][1]+=1
 
         ##### 콜라겐
-        if(str(df.loc[i]["주원료"]).count("콜라겐") >= 1 ):
-            page4_ori[df.loc[i]["month"]-1][17][1]+=1
-            page4_ori[df.loc[i]["month"]-1][17].append(i)
+        if(r_ju.count("콜라겐") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][17][1]+=1
+
+        ##### 크레아틴
+        if(r_ju.count("크레아틴") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][18][1]+=1
+
+        ##### 포스파티딜세린
+        if(r_ju.count("포스파티딜세린") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][19][1]+=1
+
+        ##### 감마리놀렌산
+        if(r_gi.count("감마리놀렌산") >= 1 ):
+            page4_ori[2023 - r_year][r_month-1][20][1]+=1
 
 
 
     # 행&열 작업
-    line_F = ["F" for i in range(18)]
-    line_G = ["G" for i in range(18)]
-    line_H = ["H" for i in range(18)]
-    line_I = ["I" for i in range(18)]
-    line_J = ["J" for i in range(18)]
-    line_K = ["K" for i in range(18)]
-    line_L = ["L" for i in range(18)]
-    line_M = ["M" for i in range(18)]
-    line_N = ["N" for i in range(18)]
-    line_O = ["O" for i in range(18)]
-    line_P = ["P" for i in range(18)]
-    line_Q = ["Q" for i in range(18)]
+    line_F = [["F" for i in range(23)] for i in range(5)]
+    line_G = [["G" for i in range(23)] for j in range(5)]
+    line_H = [["H" for i in range(23)] for j in range(5)]
+    line_I = [["I" for i in range(23)] for j in range(5)]
+    line_J = [["J" for i in range(23)] for j in range(5)]
+    line_K = [["K" for i in range(23)] for j in range(5)]
+    line_L = [["L" for i in range(23)] for j in range(5)]
+    line_M = [["M" for i in range(23)] for j in range(5)]
+    line_N = [["N" for i in range(23)] for j in range(5)]
+    line_O = [["O" for i in range(23)] for j in range(5)]
+    line_P = [["P" for i in range(23)] for j in range(5)]
+    line_Q = [["Q" for i in range(23)] for j in range(5)]
+    line_R = [["R" for i in range(23)] for j in range(5)]
 
 
-    for i in range(18):
-        line_F[i] += str(i+5)
-        line_G[i] += str(i+5)
-        line_H[i] += str(i+5)
-        line_I[i] += str(i+5)
-        line_J[i] += str(i+5)
-        line_K[i] += str(i+5)
-        line_L[i] += str(i+5)
-        line_M[i] += str(i+5)
-        line_N[i] += str(i+5)
-        line_O[i] += str(i+5)
-        line_P[i] += str(i+5)
-        line_Q[i] += str(i+5)
+    for j in range(5):
+        for i in range(23):
+            line_F[j][i] += str(i+5 + (27*j))
+            line_G[j][i] += str(i+5 + (27*j))
+            line_H[j][i] += str(i+5 + (27*j))
+            line_I[j][i] += str(i+5 + (27*j))
+            line_J[j][i] += str(i+5 + (27*j))
+            line_K[j][i] += str(i+5 + (27*j))
+            line_L[j][i] += str(i+5 + (27*j))
+            line_M[j][i] += str(i+5 + (27*j))
+            line_N[j][i] += str(i+5 + (27*j))
+            line_O[j][i] += str(i+5 + (27*j))
+            line_P[j][i] += str(i+5 + (27*j))
+            line_Q[j][i] += str(i+5 + (27*j))
+            line_R[j][i] += str(i+5 + (27*j))
 
-    temp_li = week_of_month()
-    month2 = int(temp_li[0])
     
-    for i in range(month2):
-        for j in range(18):
-            if(i==0):
-                load_ws4[line_F[j]] = page4_ori[i][j][1]
-                continue
-            if(i==1):
-                load_ws4[line_G[j]] = page4_ori[i][j][1]
-                continue
-            if(i==2):
-                load_ws4[line_H[j]] = page4_ori[i][j][1]
-                continue
-            if(i==3):
-                load_ws4[line_I[j]] = page4_ori[i][j][1]
-                continue
-            if(i==4):
-                load_ws4[line_J[j]] = page4_ori[i][j][1]
-                continue
-            if(i==5):
-                load_ws4[line_K[j]] = page4_ori[i][j][1]
-                continue
-            if(i==6):
-                load_ws4[line_L[j]] = page4_ori[i][j][1]
-                continue
-            if(i==7):
-                load_ws4[line_M[j]] = page4_ori[i][j][1]
-                continue
-            if(i==8):
-                load_ws4[line_N[j]] = page4_ori[i][j][1]
-                continue
-            if(i==9):
-                load_ws4[line_O[j]] = page4_ori[i][j][1]
-                continue
-            if(i==10):
-                load_ws4[line_P[j]] = page4_ori[i][j][1]
-                continue
-            if(i==11):
-                load_ws4[line_Q[j]] = page4_ori[i][j][1]
-                continue
+    
+    for k in range(5):
+        for i in range(13):
+            for j in range(22):
+                if(j == 21):
+                    j += 1
+                    count = 0
+                    # 행부터 채우기
+                    for data in page4_ori[k]:
+                        count += 1
+                        sum_values = 0
+                        for sublist in data: 
+                            sum_values += int(sublist[1])
+                        if(count == 1):
+                            load_ws4[line_F[k][j]] = sum_values 
+                        elif(count == 2):
+                            load_ws4[line_G[k][j]] = sum_values
+                        elif(count == 3):
+                            load_ws4[line_H[k][j]] = sum_values
+                        elif(count == 4):
+                            load_ws4[line_I[k][j]] = sum_values
+                        elif(count == 5):
+                            load_ws4[line_J[k][j]] = sum_values
+                        elif(count == 6):
+                            load_ws4[line_K[k][j]] = sum_values
+                        elif(count == 7):
+                            load_ws4[line_L[k][j]] = sum_values
+                        elif(count == 8):
+                            load_ws4[line_M[k][j]] = sum_values
+                        elif(count == 9):
+                            load_ws4[line_N[k][j]] = sum_values
+                        elif(count == 10):
+                            load_ws4[line_O[k][j]] = sum_values
+                        elif(count == 11):
+                            load_ws4[line_P[k][j]] = sum_values
+                        elif(count == 12):
+                            load_ws4[line_Q[k][j]] = sum_values
+                else:
+                    if(i==0):
+                        load_ws4[line_F[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==1):
+                        load_ws4[line_G[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==2):
+                        load_ws4[line_H[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==3):
+                        load_ws4[line_I[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==4):
+                        load_ws4[line_J[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==5):
+                        load_ws4[line_K[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==6):
+                        load_ws4[line_L[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==7):
+                        load_ws4[line_M[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==8):
+                        load_ws4[line_N[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==9):
+                        load_ws4[line_O[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==10):
+                        load_ws4[line_P[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                    elif(i==11):
+                        load_ws4[line_Q[k][j]] = page4_ori[k][i][j][1]
+                        continue
+                        
+        for o in range(21):
+            count_t = 0
+            for p in range(12):
+                count_t += page4_ori[k][p][o][1]
+            load_ws4[line_R[k][o]] = count_t
 
     return page4_ori
+
 
 
 # 고모한테 자동으로 이메일 보내기
